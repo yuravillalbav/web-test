@@ -1,15 +1,17 @@
+# Define la base de la imagen
 FROM node:14
 
+# Define el directorio de trabajo
 WORKDIR /app
 
-COPY package*.json ./
+# Copia los archivos del proyecto
+COPY . /app
 
+# Instala las dependencias
 RUN npm install
 
-COPY . .
+# Configura el puerto de escucha
+EXPOSE 80
 
-RUN npm run build
-
-EXPOSE 3000
-
+# Define el comando de inicio
 CMD ["npm", "start"]
